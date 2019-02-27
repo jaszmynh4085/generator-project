@@ -8,11 +8,19 @@
   
     <script>
         $(function(){
-            
+            $('#retry').hide();
+            $('#create').click(function(){
+              $(this).slideUp();
+              $('p').slideUp();
+              $('#retry').show().css('float', 'right')
+            });
         });
     </script>
   </head>
   <body>
   
+  <p>Name: <input id="name"></p>  <br> <br>
+  <button id="create">Create</button>
+  <button id="retry">New One</button>
   </body>
 </html>
