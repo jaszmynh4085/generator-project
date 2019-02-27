@@ -8,11 +8,19 @@
   
     <script>
         $(function(){
+          //the button "retry" will be hidden from the start
             $('#retry').hide();
-            $('#create').click(function(){
+            $('#create').click(function(){ 
+              // when the button "create" is pressed that button will slide up
               $(this).slideUp();
+              //along with the p that contains the input
               $('p').slideUp();
-              $('#retry').show().css('float', 'right')
+              // and the button retry will show on screen to the right (try to make it on the bottom of the page)
+              $('#retry').show().css('float', 'bottom')
+              
+              // it will also take in the information that the user has given and choose the apropriate background and images
+              
+              
             });
         });
     </script>
