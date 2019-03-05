@@ -1,34 +1,96 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>jQuery Template</title>
-    
-    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+
+<head>
+  <meta charset="UTF-8">
+  <title>jQuery Template</title>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+
+  <script>
+    $(function() {
+
+      //the button "retry" and the images will be hidden from the start
+
+      $('img').hide();
+
+      $('#create').click(function() {
+
+        // when the button "create" is pressed that button will slide up along with the questions
+
+        $('#questions').slideUp();
+
+        // it will also take in the information that the user has given and choose the apropriate background and images
+
+        var name = $('#name').val();
+        console.log(name)
+
+        var clouds = $('input[value="cloudy"]:checked').val()
+        console.log(clouds)
+        var noClouds = $('input[value="clear"]:checked').val()
+        console.log(noClouds)
+
+        var setting = $('option[value="sky"]:checked').val()
+        console.log(setting)
+        var setting2 = $('option[value="forest"]:checked').val()
+        console.log(setting2)
+
+        if (clouds) {
+          if (setting) {
+            $('#stormySky').show()
+          }else{
+            $('#clearForest').show()
+          }
+        }else{
+          if(setting){
+            $('#clearSky').show()
+          }else{
+            $('#stormyForest').show()
+          }
+        }
+        var enjoy = 'I hope you like it ' + name + ". If you dont then its not my problem~! Reload if you want a different pic."
+        $('p').html(enjoy)
+
+      });
+      
+    });
+  </script>
+</head>
+
+<body>
+
+  <div id="questions">
+    <h2>Free Art or Somethin....</h2>
+    Name: <input id="name">
+    <br> <br> Cloudy or Clear? <br>
+    <input type=radio name="clouds" value="cloudy"> Cloudy <br>
+    <input type=radio name="none" value="clear"></a> Clear
+    <br> <br> 
+    What Setting? 
+    <br> 
+    (Warning settings are limited) <br>
+    <select name="setting">
+      <option value="sky" selected> Sky</option>
+      <option value="forest" selected> Forest</option>
+    </select>
+    <br><br> <br>
+    Be Warned: <br>
+    You get what you paid for cuz it aint very good....
+    <br><br>
+    <button id="create">Create</button>
+  </div>
+  <br> <br>
+
+  <div id="images">
+    <img id="clearSky" src="clearSky.JPG" style="width:1000px;">
+    <img id="stormySky" src="stormySky.JPG" style="width:1000px;height:200">
+    <br>
+    <p> </p>
+  </div>
+
   
-    <script>
-        $(function(){
-          //the button "retry" will be hidden from the start
-            $('#retry').hide();
-            $('#create').click(function(){ 
-              // when the button "create" is pressed that button will slide up
-              $(this).slideUp();
-              //along with the p that contains the input
-              $('p').slideUp();
-              // and the button retry will show on screen to the right (try to make it on the bottom of the page)
-              $('#retry').show().css('float', 'bottom')
-              
-              // it will also take in the information that the user has given and choose the apropriate background and images
-              
-              
-            });
-        });
-    </script>
-  </head>
-  <body>
-  
-  <p>Name: <input id="name"></p>  <br> <br>
-  <button id="create">Create</button>
-  <button id="retry">New One</button>
-  </body>
+
+
+</body>
+
 </html>
